@@ -16,7 +16,7 @@
             System.Console.WriteLine("Gör ett av följande val: ");
             System.Console.WriteLine("1. Gör quiz");
             System.Console.WriteLine("2. Se dina poäng");
-            System.Console.WriteLine("3. Se vilka frågor du svarade fel på");
+            System.Console.WriteLine("3. Öva på de frågor där du svarade fel");
             System.Console.WriteLine("4. Avsluta program");
             string input = Console.ReadLine();
 
@@ -32,8 +32,8 @@
                 break;
 
                 case "3":
-                System.Console.WriteLine("Se fel svar");
-                handleAnswers.ShowWrongAnswers();
+                System.Console.WriteLine("Öva på de frågor som du svarade fel på");
+                handleAnswers.Practice();
                 break;
 
                 case "4":

@@ -72,7 +72,7 @@ class Quiz
                 else
                 {
                     System.Console.WriteLine($"Du svarade tyvärr fel. Rätt svar var {question.Answer}");
-                    handleAnswers.AddWrongAnswer(answer);
+                    handleAnswers.AddWrongAnswer(question);
                 }
             }
         }
@@ -82,7 +82,7 @@ class Quiz
 class HandleAnswers
 {
     private List<string> correctAnswers = new List<string>();
-    private List<string> wrongAnswers = new List<string>();
+    private List<Question> wrongAnswer = new List<Question>();    
     private List <int> points = new List<int>();
 
     public void AddCorrectAnswer(string answer, int point)
@@ -92,26 +92,36 @@ class HandleAnswers
         
     }
 
-    public void AddWrongAnswer(string answer)
+    public void AddWrongAnswer(Question question)
     {
-        wrongAnswers.Add(answer);
+        wrongAnswer.Add(question);
     }
 
-    public void ShowCorrectAnswers()
+       public void ShowWrongAnswers()
     {
-        System.Console.WriteLine("Du svarade rätt på de här frågorna: ");
-        foreach(var question in correctAnswers)
+        System.Console.WriteLine("Du svarade fel på följande frågor: ");
+        foreach(var answer in wrongAnswer)
         {
-            System.Console.WriteLine(question);
+            System.Console.WriteLine(answer);
         }
     }
 
-    public void ShowWrongAnswers()
+    public void Practice()
     {
-        System.Console.WriteLine("Du svarade fel på följande frågor: ");
-        foreach(var question in wrongAnswers)
+        foreach(var question in wrongAnswer)
         {
-            System.Console.WriteLine(question);
+            System.Console.WriteLine($"{question.Quest}");
+            string answer = Console.ReadLine();
+
+            if(answer.Trim() == question.Answer)
+            {
+                System.Console.WriteLine("Grattis! Den här gången svarade du rätt!");
+
+            }
+            else
+            {
+                System.Console.WriteLine($"Du svarade fel även denna gång. Rätt svar var {question.Answer}. Försök igen!");
+            }
         }
     }
 
