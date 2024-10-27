@@ -1,0 +1,16 @@
+Vad är 2 + 2?|4|1
+Vad är huvudstaden i Sverige?|Stockholm|3
+Vilket år landade människan på månen?|1969|4
+Vad är havets djupaste punkt?|Marianergraven|5
+Vad är pi?|3.14|2
+Vilket ämne har kemisk beteckning O?|Syre|3
+Vilken planet är känd som den röda planeten?|Mars|4
+Vad kallas den process där växter omvandlar ljus till energi?|Fotosyntes|4
+På vilken kontinent ligger Australien på?|Oceanien|5
+Vilket år startade andra världskriget?|1939|5
+Vilken är den största arten av landlevande däggdjur?|Elefant|1
+Vad är enheten för elektrisk ström?|Ampere|4
+Vad heter den mest befolkade staden i världen?|Tokyo|5
+Vilken typ av energi lagras i mat?|Kemisk|5
+
+

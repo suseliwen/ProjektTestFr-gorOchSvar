@@ -1,3 +1,5 @@
+using System.IO;
+
 class Question
 {
     public string Quest {get; set;}
@@ -12,33 +14,34 @@ class Question
     }
 }
 
+
 class Quiz
 {
-    public static void StällFrågor(HandleAnswers handleAnswers)
+
+    public static List<Question> LoadQuestions(string filePath)
     {
         List<Question> questions = new List<Question>();
 
+        foreach(var line in File.ReadLines(filePath))
         {
-            questions.Add(new Question("Hur långt är ett snöre?", "Jättelångt", 5));
-            questions.Add(new Question("Vad är 2 + 2?", "4", 1));
-            questions.Add(new Question("Vad är huvudstaden i Sverige?", "Stockholm", 3));
-            questions.Add(new Question("Vilket år landade månen?", "1969", 4));
-            questions.Add(new Question("Vad är havets djupaste punkt?", "Marianergraven", 5));
-            questions.Add(new Question("Vad är pi?", "3.14", 2));
-            questions.Add(new Question("Vilket ämne har kemisk beteckning O?", "Syre", 3));
-            questions.Add(new Question("Vad är det största djuret på jorden?", "Blåval", 5));
-            questions.Add(new Question("Vilken planet är känd som den röda planeten?", "Mars", 4));
-            questions.Add(new Question("Vad heter Sveriges kung?", "Carl XVI Gustaf", 5));
-            questions.Add(new Question("Vilket ämne har kemisk beteckning Fe?", "Järn", 5));
-            questions.Add(new Question("Vad kallas den process där växter omvandlar ljus till energi?", "Fotosyntes", 4));
-            questions.Add(new Question("Vilken kontinent ligger Australien på?", "Oceanien", 5));
-            questions.Add(new Question("Vilket år startade andra världskriget?", "1939", 5));
-            questions.Add(new Question("Vilken är den största arten av landlevande däggdjur?", "Elefant", 1));
-            questions.Add(new Question("Vad är enheten för elektrisk ström?", "Ampere", 4));
-            questions.Add(new Question("Vad heter den mest befolkade staden i världen?", "Tokyo", 5));
-            questions.Add(new Question("Vilken typ av energi lagras i mat?", "Kemisk", 5));
+            var parts = line.Split('|');
+            if(parts.Length == 3)
+            {
+                string quest = parts[0];
+                string answer = parts[1];
+                int points = int.Parse(parts[2]);
+                questions.Add(new Question(quest, answer, points));
+            }
+        }
+        return questions;
+    }
 
 
+    public static void StällFrågor(HandleAnswers handleAnswers)
+    {
+        List<Question> questions = LoadQuestions("questions.txt");
+        {
+            
             /*for (var i = 0; i < questions.Count; i++ )
             {
                 System.Console.WriteLine($"Fråga: {questions[i].Quest}, Svar: {questions[i].Answer}, Poäng: {questions[i].Points}");          
